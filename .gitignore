@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # Vscode
 .vscode
+
+# oldDesigns
+oldDesigns/
