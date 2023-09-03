@@ -15,6 +15,25 @@ module.exports = {
 				"2xl": "1400px",
 			},
 		},
+		mytheme: {
+			primary: "#09bc8a",
+
+			secondary: "#3095cc",
+
+			accent: "#a87ffb",
+
+			neutral: "#2a323c",
+
+			"base-100": "#111824",
+
+			info: "#3abff8",
+
+			success: "#36d399",
+
+			warning: "#fbbd23",
+
+			error: "#f87272",
+		},
 		extend: {
 			keyframes: {
 				"accordion-down": {
@@ -32,5 +51,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), require("daisyui")],
 };
