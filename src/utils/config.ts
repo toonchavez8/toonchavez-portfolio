@@ -37,4 +37,23 @@ const getUI = () => {
 	return merge({}, _default, config?.ui ?? {});
 };
 
+const getI18N = () => {
+	const _default = {
+		language: "en",
+		textDirection: "ltr",
+	};
+
+	const value = merge({}, _default, config?.i18n ?? {});
+
+	return Object.assign(value, {
+		dateFormatter: new Intl.DateTimeFormat(value.language, {
+			year: "numeric",
+			month: "short",
+			day: "numeric",
+			timeZone: "UTC",
+		}),
+	}) as I18NConfig;
+};
+
 export const UI = getUI();
+export const I18N = getI18N();

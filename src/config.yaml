@@ -1,0 +1,11 @@
+site:
+  name: Toonchavez
+  site: "http://localhost:4321"
+  base: "/"
+  trailingSlash: false
+
+  googleSiteVerificationId: "tbd"
+
+i18n:
+  language: en
+  textDirection: ltr

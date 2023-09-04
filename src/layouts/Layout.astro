@@ -1,11 +1,16 @@
 ---
 import '@/styles/globals.css'
+
+import { I18N } from '@/utils/config.ts'
 import Header from '@/components/layout/Header.tsx';
 import Footer from '@/components/layout/Footer.tsx';
 const { pageTitle } = Astro.props;
+
+
+const {language, textDirection} = I18N
 ---
 
-<html lang="en">
+<html lang={language} dir={textDirection}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
