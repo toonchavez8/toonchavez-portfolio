@@ -1,0 +1,52 @@
+---
+import {UI} from '@/utils/config'
+---
+
+
+<script is:inline define:vars={{defaulttheme:UI.theme || "system"}}>
+
+    // Function to apply the selected theme to the webpage
+    function applyTheme(theme) {
+      // Add or remove the "dark" class from the HTML element based on the selected theme
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    
+      // Find all input elements inside elements with 'data-tc-toggle-color-scheme' attribute
+      const matches = document.querySelectorAll("[data-tc-toggle-color-scheme] > input");
+    
+      // If matches are found, set their 'checked' property based on the theme
+      if (matches && matches.length) {
+        matches.forEach((element) => {
+          element.checked = theme !== "dark";
+        });
+      }
+    }
+    
+    // Check if a default theme is specified and apply it if necessary
+    if (
+      (defaultTheme && defaultTheme.endsWith(":only")) ||
+      (!localStorage.theme && defaultTheme !== "system")
+    ) {
+      applyTheme(defaultTheme.replace(":only", ""));
+    } 
+    // Check if the user has a stored "dark" theme preference or the system prefers a dark theme
+    else if (
+      localStorage.theme === "dark" ||
+      !(
+        "theme" in localStorage &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      )
+    ) {
+      // Apply the "dark" theme
+      applyTheme("dark");
+    } 
+    // If none of the above conditions are met, apply the "light" theme
+    else {
+      applyTheme("light");
+    }
+    
+    </script>
+    
