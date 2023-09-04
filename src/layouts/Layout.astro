@@ -2,6 +2,7 @@
 import '@/styles/globals.css'
 
 import { I18N } from '@/utils/config.ts'
+import CommonMeta from '@/components/common/CommonMeta.astro'
 import Header from '@/components/layout/Header.tsx';
 import Footer from '@/components/layout/Footer.tsx';
 const { pageTitle } = Astro.props;
@@ -9,11 +10,11 @@ const { pageTitle } = Astro.props;
 
 const {language, textDirection} = I18N
 ---
-
-<html lang={language} dir={textDirection}>
+<!DOCTYPE html>
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <CommonMeta />
+    <link rel="icon" type="image/svg+xml" href="/toonchavez-logo-icon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
