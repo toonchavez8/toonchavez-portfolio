@@ -3,6 +3,10 @@ import merge from 'lodash.merge'
 import {AstroSeo} from '@astrolib/seo'
 import type {Props as AStroSeoProps} from '@astrolib/seo'
 
-import {SITE, MetaDataConfig, I18N} from '@/utils/config'
+import {SITE, METADATA, I18N} from '@/utils/config'
 import type {MetaData} from '@/types'
+
+import {getCanonical} from '@/utils/permalinks'
+
+import {adpatOpenGraphImages} from '@/utils/images'
 ---

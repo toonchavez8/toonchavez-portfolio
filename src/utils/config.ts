@@ -2,6 +2,7 @@ import fs from "fs";
 import yaml from "js-yaml";
 import merge from "lodash.merge";
 
+import type { MetaData } from "@/types";
 export interface SiteConfig {
 	name: string;
 	site?: string;
@@ -9,7 +10,12 @@ export interface SiteConfig {
 	trailingSlash: boolean;
 	googleSiteVerificationId?: string;
 }
-export interface MetaDataConfig {}
+export interface MetaDataConfig extends Omit<MetaData, "title"> {
+	title?: {
+		defalt: string;
+		template: string;
+	};
+}
 export interface I18NConfig {
 	language: string;
 	textDirection: string;
@@ -30,6 +36,16 @@ const config = yaml.load(fs.readFileSync("src/config.yaml", "utf8")) as {
 
 const DEFAULT_SITE_NAME = "Toonchavez portfolio";
 
+const getSite = () => {
+	const _default = {
+		name: DEFAULT_SITE_NAME,
+		site: undefined,
+		base: "/",
+		trailingSlash: false,
+		googleSiteVerificationId: "",
+	};
+	return merge({}, _default, config?.site ?? {}) as SiteConfig;
+};
 const getUI = () => {
 	const _default = {
 		theme: "system",
@@ -57,5 +73,27 @@ const getI18N = () => {
 	}) as I18NConfig;
 };
 
+const getMetadata = () => {
+	const siteConfig = getSite();
+
+	const _default = {
+		title: {
+			default: siteConfig?.name || DEFAULT_SITE_NAME,
+			template: "%s",
+		},
+		description: "",
+		robots: {
+			index: false,
+			follow: false,
+		},
+		openGraph: {
+			type: "website",
+		},
+	};
+	return merge({}, _default, config?.metadata ?? {});
+};
+
 export const UI = getUI();
 export const I18N = getI18N();
+export const SITE = getSite();
+export const METADATA = getMetadata();
