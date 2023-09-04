@@ -19,15 +19,20 @@
     "astro": "^3.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "js-yaml": "^4.1.0",
+    "lodash.merge": "^4.6.2",
     "lucide-react": "^0.274.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.3.3",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@types/js-yaml": "^4.0.5",
+    "@types/lodash.merge": "^4.6.7",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "daisyui": "^3.6.4",
