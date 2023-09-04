@@ -4,7 +4,7 @@ import merge from "lodash.merge";
 
 export interface SiteConfig {
 	name: string;
-	stie?: string;
+	site?: string;
 	base?: string;
 	trailingSlash: boolean;
 	googleSiteVerificationId?: string;
@@ -27,6 +27,8 @@ const config = yaml.load(fs.readFileSync("src/config.yaml", "utf8")) as {
 	ui?: unknown;
 	analytics?: unknown;
 };
+
+const DEFAULT_SITE_NAME = "Toonchavez portfolio";
 
 const getUI = () => {
 	const _default = {
