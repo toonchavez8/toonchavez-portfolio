@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Announcement from '@/components/widgets/Announcement.astro'
+
+import type {MetaData} from '@/types'
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata } = Astro.props;
+---
+<Layout metadata={metadata}> 
+    <Header />
+    <slot/>
+    <Footer />
+</Layout>

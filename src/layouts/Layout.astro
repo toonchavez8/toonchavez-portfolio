@@ -5,9 +5,7 @@ import { I18N } from '@/utils/config.ts'
 import CommonMeta from '@/components/common/CommonMeta.astro'
 import Favicons from '@/components/common/Favicons.astro'
 import ApplyColorTheme from '@/components/common/ApplyColorTheme.astro'
-import MetaData from '@/components/common/MetaData.astro'
-import Header from '@/components/layout/Header.tsx';
-import Footer from '@/components/layout/Footer.tsx';
+// need to import metadata component 
 const { pageTitle } = Astro.props;
 
 
@@ -19,16 +17,17 @@ const {language, textDirection} = I18N
     <CommonMeta />
     <Favicons />
     <ApplyColorTheme />
-    <MetaData />
+    <!-- Meta data component goes here -->
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
   <body class="bg-slate-200 dark:bg-slate-900 antialiased text-default tracking-tight">
-    <Header client:load />
-    <main>
     <slot />
-  <!-- comment to be deleted -->
-    </main>
-    <Footer />
+
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
   </body>
 </html>
